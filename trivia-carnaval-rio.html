@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trivia del Carnaval de Río</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<header class="top">
+  <div class="brand">Trivia Carnaval de Río</div>
+  <div class="scoreboard" id="scoreboard" aria-live="polite"></div>
+  <div class="tools">
+    <button class="tool-btn" id="btn-sound" type="button">Sonido: sí</button>
+    <button class="tool-btn" id="btn-full" type="button">Pantalla completa</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- INICIO -->
+  <section class="start" id="screen-start">
+    <div class="burst" aria-hidden="true"></div>
+    <h1>Trivia del Carnaval de Río</h1>
+    <p class="lead">20 preguntas sobre samba, desfiles y tradición. Responde rápido: cada segundo que sobra suma puntos.</p>
+
+    <div class="panel">
+      <h2>¿Cómo van a jugar?</h2>
+      <div class="modes" id="modes">
+        <button type="button" class="mode" data-n="1" aria-pressed="true">Solo</button>
+        <button type="button" class="mode" data-n="2" aria-pressed="false">2 equipos</button>
+        <button type="button" class="mode" data-n="3" aria-pressed="false">3 equipos</button>
+        <button type="button" class="mode" data-n="4" aria-pressed="false">4 equipos</button>
+      </div>
+      <div class="names" id="names"></div>
+      <label class="check"><input type="checkbox" id="opt-shuffle" checked> Mezclar el orden de las preguntas</label>
+      <button type="button" class="btn-main" id="btn-start">Empezar</button>
+      <p class="rules">Cada pregunta vale 100 puntos más hasta 100 por rapidez. Con pista vale 50 en vez de 100. Si aciertas varias seguidas, ganas puntos extra por racha. En modo equipos se turnan para responder.</p>
+    </div>
+  </section>
+
+  <!-- JUEGO -->
+  <section id="screen-game" hidden>
+    <div class="meta">
+      <div class="count" id="count"></div>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+    </div>
+    <div class="turn" id="turn" hidden></div>
+
+    <div class="timer">
+      <div class="bar"><div class="fill" id="fill"></div></div>
+      <div class="secs" id="secs">20</div>
+    </div>
+
+    <div class="card" id="card">
+      <div class="question" id="question"></div>
+    </div>
+
+    <div class="options" id="options"></div>
+
+    <div class="hint-row">
+      <button type="button" class="btn-hint" id="btn-hint">Ver pista (vale 50)</button>
+      <span class="hint-text" id="hint-text"></span>
+    </div>
+
+    <div class="feedback" id="feedback" hidden aria-live="polite">
+      <h3 id="fb-title"></h3>
+      <div class="pts" id="fb-pts"></div>
+      <div class="ans" id="fb-ans"></div>
+      <p id="fb-explain"></p>
+      <button type="button" class="btn-next" id="btn-next">Siguiente pregunta</button>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="end" id="screen-end" hidden>
+    <h2 id="end-title"></h2>
+    <p class="sub" id="end-sub"></p>
+    <ol class="ranking" id="ranking"></ol>
+    <div class="end-actions">
+      <button type="button" class="btn-main" id="btn-again">Jugar otra vez</button>
+      <button type="button" class="btn-ghost" id="btn-setup">Cambiar equipos</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
